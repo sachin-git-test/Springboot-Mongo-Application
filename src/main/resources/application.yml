@@ -2,7 +2,14 @@ spring:
   data:
     mongodb:
       uri: mongodb://admin:secret123@mymongoapp:27017/users?authSource=admin
-
-
+      management:
+        endpoints:
+          web:
+            exposure:
+              include: health,info
+      endpoint:
+        health:
+          show-details: always
+        
 server:
   port: 8080
