@@ -1,24 +1,5 @@
 # -------- Stage 1: Build --------
-FROM ubuntu:latest AS Build
-
-RUN apt update && apt install -y wget tar unzip git
-
-ENV JAVA_HOME=/opt/java-17/jdk-17.0.8+7
-ENV MAVEN_HOME=/opt/maven/apache-maven-3.9.15
-ENV PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
-
-WORKDIR /opt/installed_apps
-
-# Install Java
-RUN wget https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.8+7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.8_7.tar.gz \
- && mkdir -p /opt/java-17 \
- && tar -xvf OpenJDK17U-jdk_x64_linux_hotspot_17.0.8_7.tar.gz -C /opt/java-17
-
-# Install Maven
-RUN wget https://dlcdn.apache.org/maven/maven-3/3.9.15/binaries/apache-maven-3.9.15-bin.tar.gz \
- && mkdir -p /opt/maven \
- && tar -xvf apache-maven-3.9.15-bin.tar.gz -C /opt/maven
-
+FROM maven:3.8.8 as Build
 # Copy source code
 COPY . .
 
