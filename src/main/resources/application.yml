@@ -1,7 +1,7 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://admin:secret123@mymongoapp:27017/users?authSource=admin
+      uri: mongodb://mongoapp:27017/users?authSource=admin
       management:
         endpoints:
           web:
