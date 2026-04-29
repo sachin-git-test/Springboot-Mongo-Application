@@ -1,4 +1,4 @@
-version "3.6"
+version: "3.6"
 services:
   springapp:
     image: sachindockeregister/springappwithencryptedcred:1
@@ -28,8 +28,8 @@ services:
 
 volumes:
   mongovol:
-    driver: local
+    driver: local # external: true
 
 networks:
   springbootNetwork:
-    driver: bridge
+    driver: bridge # external: true
